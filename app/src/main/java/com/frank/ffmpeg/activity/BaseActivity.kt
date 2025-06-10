@@ -133,3 +133,4 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 }
+

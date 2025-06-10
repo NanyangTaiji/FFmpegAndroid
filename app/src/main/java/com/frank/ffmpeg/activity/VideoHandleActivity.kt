@@ -109,9 +109,9 @@ class VideoHandleActivity : BaseActivity() {
 
         intView()
         ffmpegHandler = FFmpegHandler(mHandler)
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
-            PATH = cacheDir.absolutePath
-        }
+      //  if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+          //  PATH = cacheDir.absolutePath
+      //  }
     }
 
     private fun intView() {
@@ -136,7 +136,10 @@ class VideoHandleActivity : BaseActivity() {
                 getString(R.string.video_subtitle),
                 getString(R.string.video_rotate),
                 getString(R.string.video_gray),
-                getString(R.string.video_zoom))
+                getString(R.string.video_zoom),
+                getString(R.string.video_moov),
+                getString(R.string.video_stand),
+                )
 
         layoutVideoHandle = findViewById(R.id.list_video_item)
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -186,9 +189,9 @@ class VideoHandleActivity : BaseActivity() {
         when (currentPosition) {
             0 -> { //transform format
                 outputPath = PATH + File.separator + "transformVideo.mp4"
-                val width = 1280
-                val height = 720
-                commandLine = FFmpegUtil.transformVideoWithEncode(srcFile, width, height, outputPath)
+              //  val width = 1280
+               // val height = 720
+                commandLine = FFmpegUtil.transformVideoWithEncode(srcFile,outputPath)
             }
             1 -> { //cut video
                 outputPath = PATH + File.separator + "cutVideo" + suffix
@@ -353,6 +356,17 @@ class VideoHandleActivity : BaseActivity() {
                 outputPath = PATH + File.separator + "zoom.mp4"
                 val position = 0
                 commandLine = FFmpegUtil.photoZoomToVideo(srcFile, position, outputPath)
+            }
+            19 -> { // moov ahead
+                outputPath = PATH + File.separator + "moovFast.mp4"
+                val position = 0
+                commandLine = FFmpegUtil.moveMoovAhead(srcFile, outputPath)
+            }
+            20 -> { //transform format
+                outputPath = PATH + File.separator + "standard.mp4"
+                 val width = 1280
+                 val height = 720
+                commandLine = FFmpegUtil.transformVideoForChromecast(srcFile,width,height,outputPath)
             }
             else -> {
             }

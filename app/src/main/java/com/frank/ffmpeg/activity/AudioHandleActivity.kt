@@ -108,9 +108,9 @@ class AudioHandleActivity : BaseActivity() {
 
         initView()
         ffmpegHandler = FFmpegHandler(mHandler)
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
-            PATH = cacheDir.absolutePath
-        }
+       // if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+           // /PATH = cacheDir.absolutePath
+       // }
     }
 
     private fun initView() {

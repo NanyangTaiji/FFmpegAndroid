@@ -30,7 +30,9 @@
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true">
 
-        <activity android:name=".activity.MainActivity" android:exported="true">
+        <activity android:name=".activity.MainActivity"
+            android:exported="true"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -38,22 +40,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.AudioHandleActivity" />
-        <activity android:name=".activity.MediaHandleActivity" />
-        <activity android:name=".activity.VideoHandleActivity" />
-        <activity android:name=".activity.PushActivity" />
+        <activity android:name=".activity.AudioHandleActivity"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
+        <activity android:name=".activity.MediaHandleActivity"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
+        <activity android:name=".activity.VideoHandleActivity"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
+        <activity android:name=".activity.PushActivity"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
         <activity
             android:name=".activity.LiveActivity"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
         <activity
             android:name=".activity.FilterActivity"
-            android:screenOrientation="landscape" />
-        <activity android:name=".activity.VideoPreviewActivity" />
-        <activity android:name=".activity.ProbeFormatActivity" />
-        <activity android:name=".activity.AudioEffectActivity" />
-        <activity android:name=".activity.AudioPlayActivity" />
-        <activity android:name=".activity.EqualizerActivity" />
-        <activity android:name=".activity.CameraFilterActivity" />
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
+        <activity android:name=".activity.VideoPreviewActivity"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
+        <activity android:name=".activity.ProbeFormatActivity"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
+        <activity android:name=".activity.AudioEffectActivity"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
+        <activity android:name=".activity.AudioPlayActivity"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
+        <activity android:name=".activity.EqualizerActivity"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
+        <activity android:name=".activity.CameraFilterActivity"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|orientation"/>
     </application>
 
 </manifest>

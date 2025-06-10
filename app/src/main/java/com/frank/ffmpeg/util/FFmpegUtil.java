@@ -347,6 +347,31 @@ public class FFmpegUtil {
         return insert(transformVideoCmd.split(" "), 2, inputPath, outputPath);
     }
 
+    public static String[] transformVideoForChromecast(String inputPath, int width, int height, String outputPath) {
+        // H.264 High Profile with AAC audio - optimal for Chromecast
+        String transformVideoCmd = "ffmpeg -i -vcodec libx264 -profile:v high -level 5.1 -preset superfast -acodec aac -b:a 128k -movflags faststart -y";
+
+        if (width > 0 && height > 0) {
+            String scale = "-vf scale=" + width + ":" + height;
+            transformVideoCmd += " " + scale;
+        }
+
+        return insert(transformVideoCmd.split(" "), 2, inputPath, outputPath);
+    }
+
+    // Alternative method for maximum compatibility
+    public static String[] transformVideoForChromecastOptimal(String inputPath, int width, int height, String outputPath) {
+        String transformVideoCmd = "ffmpeg -i -vcodec libx264 -profile:v high -level 5.1 -preset fast -acodec aac -b:a 192k -ar 48000 -ac 2 -movflags faststart -pix_fmt yuv420p -y";
+
+        if (width > 0 && height > 0) {
+            // Ensure even dimensions for H.264 compatibility
+            String scale = "-vf scale=" + width + ":" + height + ":force_original_aspect_ratio=decrease,pad=" + width + ":" + height + ":(ow-iw)/2:(oh-ih)/2";
+            transformVideoCmd += " " + scale;
+        }
+
+        return insert(transformVideoCmd.split(" "), 2, inputPath, outputPath);
+    }
+
     /**
      * joint every single video together
      * @param fileListPath the path file list
