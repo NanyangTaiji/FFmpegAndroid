@@ -468,7 +468,7 @@ public class FFmpegUtil {
     public static String[] addWaterMarkGif(String inputPath, String imgPath, int location, int bitRate,
                                            int offsetXY, String outputPath) {
         String mBitRate = bitRate + "k";
-        int offset = ScreenUtil.INSTANCE.dp2px(FFmpegApplication.getInstance(), offsetXY);
+        int offset = ScreenUtil.dp2px(FFmpegApplication.getInstance(), offsetXY);
         String overlay = obtainOverlay(offset, offset, location) + ":shortest=1";
         String waterMarkCmd = "ffmpeg -i -ignore_loop 0 -i -b:v %s -filter_complex %s -preset:v superfast -y";
         waterMarkCmd = String.format(waterMarkCmd, mBitRate, overlay);

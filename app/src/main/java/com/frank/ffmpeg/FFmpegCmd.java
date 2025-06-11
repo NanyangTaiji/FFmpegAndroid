@@ -51,7 +51,7 @@ public class FFmpegCmd {
      */
     public static void execute(final String[] commands, final OnHandleListener onHandleListener) {
         mProgressListener = onHandleListener;
-        ThreadPoolUtil.INSTANCE.executeSingleThreadPool(new Runnable() {
+        ThreadPoolUtil.executeSingleThreadPool(new Runnable() {
             @Override
             public void run() {
                 if (onHandleListener != null) {
@@ -78,7 +78,7 @@ public class FFmpegCmd {
      */
     public static void execute(final List<String[]> commands, final OnHandleListener onHandleListener) {
         mProgressListener = onHandleListener;
-        ThreadPoolUtil.INSTANCE.executeSingleThreadPool(new Runnable() {
+        ThreadPoolUtil.executeSingleThreadPool(new Runnable() {
             @Override
             public void run() {
                 if (onHandleListener != null) {
@@ -111,7 +111,7 @@ public class FFmpegCmd {
      * @param onHandleListener onHandleListener
      */
     public static void executeProbe(final String[] commands, final OnHandleListener onHandleListener) {
-        ThreadPoolUtil.INSTANCE.executeSingleThreadPool(new Runnable() {
+        ThreadPoolUtil.executeSingleThreadPool(new Runnable() {
             @Override
             public void run() {
                 if (onHandleListener != null) {
